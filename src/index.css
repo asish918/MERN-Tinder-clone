@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Readex Pro', sans-serif;
+}
+
+.primary-button {
+    color: white;
+    text-transform: uppercase;
+    font-size: 15px;
+    background:  linear-gradient(45deg, #fe3072, #ff5940);
+    padding: 12px 30px;
+    border-radius: 30px;
+    border: none;
+}
+
+.primary-button:hover {
+    background:  linear-gradient(260deg, #fe3072, #ff5940);
+}
+
+body {
+    text-align: center;
+}
+
+
+/* -----NavBar Styles----- */
+
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav .logo-container {
+    width: 170px;
+    margin: 15px;
+
+}
+
+nav .logo-container .logo {
+    width: 100%;
+}
+
+nav .nav-button {
+    color: #fe3072;
+    background-color: white;
+    font-size: large;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    margin: 10px;
+}
+
+/* ------ Homepage ------ */
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.65) 0%,
+        rgba(0, 0, 0, 0) 100%
+    );
+}
