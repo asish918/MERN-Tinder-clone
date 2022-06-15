@@ -8,6 +8,7 @@ const Home = () => {
     const [isSignUp, setIsSignUp] = useState(true)
 
     const authToken = false;
+
     const minimal = false
 
     const handleClick = () => {
@@ -19,7 +20,7 @@ const Home = () => {
     return (
         <>
             <div className="overlay">
-                <Nav minimal={minimal} authToken={authToken} setShowModal={setShowModal} showModal={showModal} setIsSignUp={setIsSignUp} />
+                <Nav minimal={minimal} setShowModal={setShowModal} showModal={showModal} setIsSignUp={setIsSignUp} />
                 <div className="home">
                     <h1 className="primary-title">Swipe Right™</h1>
                     <button className="primary-button" onClick={handleClick}>
