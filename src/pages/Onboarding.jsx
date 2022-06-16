@@ -1,26 +1,39 @@
 import { useState } from "react";
 import Nav from '../components/Nav'
+import { useCookies } from 'react-cookie'
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const OnBoarding = () => {
+    let navigate = useNavigate();
+    const[cookies, setCookies, removeCookies] = useCookies(['user']);
     const [formData, setFormData] = useState(
         {
-            user_id: '',
+            user_id: cookies.UserId,
             first_name: '',
             DOB_day: '',
             DOB_month: '',
             DOB_year: '',
             show_gender: false,
-            gender_identity: 'Male',
-            gender_interest: 'female',
-            email: '',
+            gender_identity: '',
+            gender_interest: '',
             url: '',
             about: '',
             matches: [],
         }
     );
 
-    const handleSubmit = () => {
-        console.log('hello')
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        try {
+            const response = await axios.put('http://localhost:8000/user', {formData})
+
+            const success = response.status === 200
+            if(success) navigate('/dashboard')
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     const handleChange = (e) => {
@@ -188,7 +201,7 @@ const OnBoarding = () => {
                             required={true}
                             type="url" />
                         <div className="photo-container">
-                            <img src={formData.url} alt="profile-preview" />
+                            {formData.url && <img src={formData.url} alt="profile-preview" />}
                         </div>
                     </section>
 

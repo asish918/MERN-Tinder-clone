@@ -29,7 +29,6 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
                 email, password
             })
 
-            setCookies('Email', response.data.email)
             setCookies('UserId', response.data.userId)
             setCookies('AuthToken', response.data.token)
 
