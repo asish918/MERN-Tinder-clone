@@ -40,6 +40,7 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
 
             if (success && !isSignUp)
                 navigate('/dashboard')
+                
 
         } catch (error) {
             console.log(error);
