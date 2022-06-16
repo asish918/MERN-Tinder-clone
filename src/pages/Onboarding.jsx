@@ -10,7 +10,7 @@ const OnBoarding = () => {
             DOB_month: '',
             DOB_year: '',
             show_gender: false,
-            gender_identity: 'male',
+            gender_identity: 'Male',
             gender_interest: 'female',
             email: '',
             url: '',

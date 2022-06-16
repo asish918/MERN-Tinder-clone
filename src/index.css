@@ -120,7 +120,7 @@ nav .nav-button:disabled {
     flex-direction: column;
 }
 
-s .auth-modal input[type=password],
+.auth-modal input[type=password],
 .auth-modal input[type=email] {
     padding: 8px;
     margin: 8px;
