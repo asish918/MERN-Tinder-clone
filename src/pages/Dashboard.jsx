@@ -7,23 +7,23 @@ const Dashboard = () => {
     const characters = [
         {
             name: 'Richard Hendricks',
-            url: 'https://picsum.photos/200/200'
+            url: 'https://picsum.photos/400/600'
         },
         {
             name: 'Erlich Bachman',
-            url: 'https://picsum.photos/200/200'
+            url: 'https://picsum.photos/400/600'
         },
         {
             name: 'Monica Hall',
-            url: 'https://picsum.photos/200/200'
+            url: 'https://picsum.photos/400/600'
         },
         {
             name: 'Jared Dunn',
-            url: 'https://picsum.photos/200/200'
+            url: 'https://picsum.photos/400/600'
         },
         {
             name: 'Dinesh Chugtai',
-            url: 'https://picsum.photos/200/200'
+            url: 'https://picsum.photos/400/600'
         }
     ]
 
