@@ -17,14 +17,14 @@
     color: white;
     text-transform: uppercase;
     font-size: 15px;
-    background:  linear-gradient(45deg, #fe3072, #ff5940);
+    background: linear-gradient(45deg, #fe3072, #ff5940);
     padding: 12px 30px;
     border-radius: 30px;
     border: none;
 }
 
 .primary-button:hover {
-    background:  linear-gradient(260deg, #fe3072, #ff5940);
+    background: linear-gradient(260deg, #fe3072, #ff5940);
 }
 
 h2 {
@@ -39,7 +39,7 @@ h2 {
     text-transform: uppercase;
     padding: 12px 30px;
     border-radius: 30px;
-    border: solid  2px rgb(121, 119, 119);
+    border: solid 2px rgb(121, 119, 119);
     margin: 4px
 }
 
@@ -86,11 +86,9 @@ nav .nav-button:disabled {
     width: 100vw;
     height: 100vh;
     position: fixed;
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.65) 0%,
-        rgba(0, 0, 0, 0) 100%
-    ), url(./components/images/homepage.webp) ;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.65) 0%,
+            rgba(0, 0, 0, 0) 100%), url(./components/images/homepage.webp);
 }
 
 .home {
@@ -103,7 +101,7 @@ nav .nav-button:disabled {
     position: absolute;
     left: 0;
     right: 0;
-    top: 150px; 
+    top: 150px;
     margin-left: auto;
     margin-right: auto;
     max-width: 460px;
@@ -121,8 +119,8 @@ nav .nav-button:disabled {
     display: flex;
     flex-direction: column;
 }
-s
-.auth-modal input[type=password], 
+
+s .auth-modal input[type=password],
 .auth-modal input[type=email] {
     padding: 8px;
     margin: 8px;
@@ -190,7 +188,7 @@ s
     display: none;
 }
 
-.onboarding form input[type=radio]:checked + label {
+.onboarding form input[type=radio]:checked+label {
     border: solid 2px rgb(221, 39, 222);
 }
 
@@ -211,3 +209,49 @@ s
     width: 100%;
     object-fit: cover;
 }
+
+
+/* ------ Dashboard ------ */
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dashboard .swipe-container {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.swipe {
+    position: absolute;
+}
+
+.dashboard .card-container {
+    width: 400px;
+    height: 650px;
+}
+
+.card {
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.30);
+    width: 400px;
+    height: 650px;
+    border-radius: 30px;
+    background-size: cover;
+    background-position: center;
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.dashboard .swipe-info {
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+}
+
+/* ----Chat Container ----- */
