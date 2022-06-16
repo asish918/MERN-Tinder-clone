@@ -25,7 +25,7 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
                 return
             }
 
-            const response = await axios.post('http://localhost:8000/signup', {
+            const response = await axios.post(`http://localhost:8000/${isSignUp ? 'signup' : 'login'}`, {
                 email, password
             })
 
@@ -35,9 +35,12 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
 
             const success = response.status === 201
 
-            if(success){
+            if (success && isSignUp) {
                 navigate('/onboarding')
             }
+
+            if (success && !isSignUp)
+                navigate('/dashboard')
 
         } catch (error) {
             console.log(error);

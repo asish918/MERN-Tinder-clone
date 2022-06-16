@@ -1,14 +1,12 @@
 import wlogo from './images/white-logo.png'
 import clogo from './images/color-logo.png'
 
-const Nav = ({ minimal, setShowModal, showModal, setIsSignUp }) => {
+const Nav = ({authToken, minimal, setShowModal, showModal, setIsSignUp }) => {
 
     const handleClick = () => {
         setShowModal(true)
         setIsSignUp(false)
     }
-
-    const authToken = true
 
     return (
         <nav>
