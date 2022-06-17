@@ -21,8 +21,6 @@ const MatchesDisplay = ({ matches, setClickedUser }) => {
     useEffect(() => {
         getMatches()
     }, [])
-
-    console.log(matchedProfile)
     
     return (
         <div className="matches-display">
