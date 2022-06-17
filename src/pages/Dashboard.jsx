@@ -56,12 +56,6 @@ const Dashboard = () => {
         }
         getUser()
     }
-    
-    // const matchedUserIds = user?.matches.map(({user_id}) => user_id).concat(userId)
-
-    // const filteredGenderUsers = genderedUsers?.filter(
-    //     genderedUser => !matchedUserIds.includes(genderedUser.user_id)
-    // )
 
     const matchedUserIds = user?.matches.map(({user_id}) => user_id).concat(userId)
 
