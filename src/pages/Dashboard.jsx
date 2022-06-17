@@ -11,67 +11,74 @@ const Dashboard = () => {
 
     const userId = cookies.UserId;
 
-    
+    const getUser = async () => {
+        try {
+            const response = await axios.get('http://localhost:8000/user', {
+                params: { userId }
+            })
+
+            setUser(response.data)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const getGenderedUsers = async () => {
+        try {
+            const response = await axios.get('http://localhost:8000/genderedusers', {
+                params: { gender: user?.gender_interest }
+            })
+
+            setGenderedUsers(response.data)
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     useEffect(() => {
-        const getUser = async () => {
-            try {
-                const response = await axios.get('http://localhost:8000/user', {
-                    params: { userId }
-                })
-    
-                setUser(response.data)
-            } catch (error) {
-                console.log(error);
-            }
-        }
-    
-        const getGenderedUsers = async () => {
-            try {
-                const response = await axios.get('http://localhost:8000/genderedusers', {
-                    params: { gender: user?.gender_interest }
-                })
-    
-                setGenderedUsers(response.data)
-            } catch (error) {
-                console.log(error);
-            }
-        }
-
         getUser()
-        getGenderedUsers() 
     }, [])
-    
-    // const characters = [
-    //     {
-    //         name: 'Richard Hendricks',
-    //         url: 'https://picsum.photos/400/600'
-    //     },
-    //     {
-    //         name: 'Erlich Bachman',
-    //         url: 'https://picsum.photos/400/600'
-    //     },
-    //     {
-    //         name: 'Monica Hall',
-    //         url: 'https://picsum.photos/400/600'
-    //     },
-    //     {
-    //         name: 'Jared Dunn',
-    //         url: 'https://picsum.photos/400/600'
-    //     },
-    //     {
-    //         name: 'Dinesh Chugtai',
-    //         url: 'https://picsum.photos/400/600'
-    //     }
-    // ]
 
-    const characters = genderedUsers;
+    useEffect(() => {
+        if (user) {
+            getGenderedUsers()
+        }
+    }, [user])
+
+    const updateMatches = async (matchedUser) => {
+        try {
+            const response = await axios.put('http://localhost:8000/addmatch', {
+                userId,
+                matchedUser
+            })
+        } catch (error) {
+            console.log(error);
+        }
+        getUser()
+    }
+    
+    // const matchedUserIds = user?.matches.map(({user_id}) => user_id).concat(userId)
+
+    // const filteredGenderUsers = genderedUsers?.filter(
+    //     genderedUser => !matchedUserIds.includes(genderedUser.user_id)
+    // )
+
+    const matchedUserIds = user?.matches.map(({user_id}) => user_id).concat(userId)
+
+    const filteredGenderedUsers = genderedUsers?.filter(genderedUser => !matchedUserIds.includes(genderedUser.user_id))
+
+    const characters = filteredGenderedUsers;
 
     const [lastDirection, setLastDirection] = useState();
 
-    const swiped = (direction, nameToDelete) => {
-        console.log('removing: ' + nameToDelete)
+    const swiped = (direction, swipedUser) => {
         setLastDirection(direction)
+
+        if (direction === 'right') {
+            updateMatches(swipedUser)
+        }
+
+        getUser();
     }
 
     const outOfFrame = (name) => {
@@ -87,7 +94,7 @@ const Dashboard = () => {
                     <div className="swipe-container">
                         <div className="card-container">
                             {characters.map((character) =>
-                                <TinderCard className='swipe' key={character.first_name} onSwipe={(dir) => swiped(dir, character.first_name)} onCardLeftScreen={() => outOfFrame(character.first_name)}>
+                                <TinderCard className='swipe' key={character.first_name} onSwipe={(dir) => swiped(dir, character.user_id)} onCardLeftScreen={() => outOfFrame(character.first_name)}>
                                     <div style={{ backgroundImage: 'url(' + character.url + ')' }} className='card'>
                                         <h3>{character.first_name}</h3>
                                     </div>
